@@ -1,15 +1,16 @@
 import { Header } from "./components/layouts/Header"
 
 import { Menu } from "./components/menu/Menu"
-import { Earth } from "./components/earth/Earth"
-import { Mars } from "./components/mars/Mars"
-import { Jupiter } from "./components/jupiter/Jupiter"
+import { Earth } from "./components/bodies/earth/Earth"
+import { Mars } from "./components/bodies/mars/Mars"
+import { Jupiter } from "./components/bodies/jupiter/Jupiter"
 import { useState } from "react"
 
 function App() {
-  const [body, setBody] = useState("earth")
-
+  const [body, setBody] = useState("jupiter")
   const handleBody = (body) => () => setBody(body)
+
+  const [rotationSpeed, setRotationSpeed] = useState(0.01)
 
   return (
     <div className="font-orbitron bg-black bg-stars">
@@ -20,9 +21,9 @@ function App() {
           <button className={`${body == "mars" && "text-red-700"} transition-all duration-300`} onClick={handleBody("mars")}>Mars</button>
           <button className={`${body == "jupiter" && "text-orange-700"} transition-all duration-300`} onClick={handleBody("jupiter")}>Jupiter</button>
         </section>
-        {body == "earth" && (<Earth />)}
-        {body == "mars" && (<Mars />)}
-        {body == "jupiter" && (<Jupiter />)}
+        {body == "mars" && (<Mars body={"mars"} size={0.6} rotSpeed={0.00103} clouds={false} />)}
+        {body == "earth" && (<Earth body={"earth"} size={0.6} rotSpeed={0.001} clouds={true} />)}
+        {body == "jupiter" && (<Jupiter body={"jupiter"} size={0.6} rotSpeed={0.00103} clouds={false} />)}
       </main>
     </div>
   )

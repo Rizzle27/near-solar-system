@@ -1,13 +1,20 @@
-import { Sphere } from "../sphere/Sphere";
+import { useState } from "react";
+import { Sphere } from "../../models_templates/Sphere";
 
-export function Jupiter() {
+export function Jupiter({ body, size, rotSpeed, clouds }) {
+  const [camPos, setCamPos] = useState({ x: 0, y: 0, z: 2 });
+
+  const handleCamPos = (x, y, z) => {
+    setCamPos({ x, y, z });
+  };
+
   return (
-    <section className="flex justify-between h-[800px]">
-      <article className="flex flex-col gap-8">
+    <section className="flex justify-between h-[800px] mx-8">
+      <article className="flex flex-col w-[80%] gap-8 mx-14">
         <div className="flex mx-auto">
           <h2 className="text-4xl text-white">Jupiter</h2>
         </div>
-        <div className="flex flex-col gap-6 mx-auto w-[70%] text-white">
+        <div className="flex flex-col gap-6 mx-auto text-white">
           <section className="flex flex-col gap-4">
             <h3 className="text-2xl">Physical Characteristics</h3>
             <p className="font-montserrat">
@@ -46,8 +53,15 @@ export function Jupiter() {
           </section>
         </div>
       </article>
-
-      <Sphere body={"jupiter"} size={0.7} rotSpeed={0.00041} clouds={false} />
+      <div className="flex flex-col items-center gap-4 w-[20%] py-20 mx-auto">
+        <button onClick={() => handleCamPos(0, 0, 2)} className="rounded-full w-20 border-2 p-2 border-dashed hover:p-1 duration-300">
+          <img className="rounded-full" src="/assets/jupiter/spots/jupiter.png" alt="Big Jupiter storm" />
+        </button>
+        <button onClick={() => handleCamPos(0.73, -0.4, 0.80)} className="rounded-full w-20 border-2 p-2 border-dashed hover:p-1 duration-300">
+          <img className="rounded-full" src="/assets/jupiter/spots/big_storm.png" alt="Big Jupiter storm" />
+        </button>
+      </div>
+      <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} camPos={camPos} />
     </section>
   );
 }

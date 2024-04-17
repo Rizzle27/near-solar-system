@@ -1,6 +1,6 @@
-import { Sphere } from "../sphere/Sphere";
+import { Sphere } from "../../models_templates/Sphere";
 
-export function Mars() {
+export function Mars({ body, size, rotSpeed, clouds }) {
   return (
     <section className="flex justify-between h-[800px]">
       <article className="flex flex-col gap-8">
@@ -49,7 +49,7 @@ export function Mars() {
           </section>
         </div>
       </article>
-      <Sphere body={"mars"} size={0.266} rotSpeed={0.00103} clouds={false} />
+      <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} />
     </section>
   );
 }
