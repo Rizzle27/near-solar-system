@@ -7,7 +7,7 @@ export function Mars() {
         <div className="flex mx-auto">
           <h2 className="text-4xl text-white">Mars</h2>
         </div>
-        <div class="flex flex-col gap-6 mx-auto w-[70%] text-white">
+        <div className="flex flex-col gap-6 mx-auto w-[70%] text-white">
           <section className="flex flex-col gap-4">
             <h3 className="text-2xl">Physical Characteristics</h3>
             <p className="font-montserrat">
@@ -49,7 +49,7 @@ export function Mars() {
           </section>
         </div>
       </article>
-      <Sphere body={"mars"} size={0.266} rotSpeed={0.00103} />
+      <Sphere body={"mars"} size={0.266} rotSpeed={0.00103} clouds={false} />
     </section>
   );
 }

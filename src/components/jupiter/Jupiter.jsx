@@ -3,14 +3,14 @@ import { Sphere } from "../sphere/Sphere";
 export function Jupiter() {
   return (
     <section className="flex justify-between h-[800px]">
-      <article class="flex flex-col gap-8">
-        <div class="flex mx-auto">
-          <h2 class="text-4xl text-white">Jupiter</h2>
+      <article className="flex flex-col gap-8">
+        <div className="flex mx-auto">
+          <h2 className="text-4xl text-white">Jupiter</h2>
         </div>
-        <div class="flex flex-col gap-6 mx-auto w-[70%] text-white">
-          <section class="flex flex-col gap-4">
-            <h3 class="text-2xl">Physical Characteristics</h3>
-            <p class="font-montserrat">
+        <div className="flex flex-col gap-6 mx-auto w-[70%] text-white">
+          <section className="flex flex-col gap-4">
+            <h3 className="text-2xl">Physical Characteristics</h3>
+            <p className="font-montserrat">
               Jupiter is the largest planet in our solar system, with a diameter
               of approximately 139,820 kilometers. Its iconic feature is the
               Great Red Spot, a massive storm that has been raging for
@@ -21,9 +21,9 @@ export function Jupiter() {
             </p>
           </section>
 
-          <section class="flex flex-col gap-4">
-            <h3 class="text-2xl">Moons</h3>
-            <p class="font-montserrat">
+          <section className="flex flex-col gap-4">
+            <h3 className="text-2xl">Moons</h3>
+            <p className="font-montserrat">
               Jupiter is orbited by a vast system of moons, with over 70 known
               moons in total. Among its largest moons are Io, Europa, Ganymede,
               and Callisto. These moons are diverse worlds with their own unique
@@ -33,9 +33,9 @@ export function Jupiter() {
             </p>
           </section>
 
-          <section class="flex flex-col gap-4">
-            <h3 class="text-2xl">Exploration</h3>
-            <p class="font-montserrat">
+          <section className="flex flex-col gap-4">
+            <h3 className="text-2xl">Exploration</h3>
+            <p className="font-montserrat">
               Jupiter has been the subject of numerous space missions, including
               flybys by spacecraft like Voyager and Galileo, which provided
               unprecedented views of the planet and its moons. The Juno mission,
@@ -47,7 +47,7 @@ export function Jupiter() {
         </div>
       </article>
 
-      <Sphere body={"jupiter"} size={0.7} rotSpeed={0.00041} />
+      <Sphere body={"jupiter"} size={0.7} rotSpeed={0.00041} clouds={false} />
     </section>
   );
 }

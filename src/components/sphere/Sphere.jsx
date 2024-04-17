@@ -2,23 +2,20 @@ import { useRef, useEffect } from "react";
 import * as THREE from 'three';
 import { Tween } from "three/examples/jsm/libs/tween.module.js";
 
-export function Sphere({ body, size, rotSpeed }) {
+export function Sphere({ body, size, rotSpeed, clouds }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    let scene, camera, renderer, planetMesh;
+    let scene, camera, renderer, planetMesh, cloudsMesh;
 
     const init = () => {
       scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x000000);
       THREE.MeshBasicMaterial.prototype.lights = false;
   
       camera = new THREE.PerspectiveCamera(45, 800 / 800, 0.1, 1000);
-      // camera.position.set(-1, 0, 2);
-      // camera.lookAt(0,0,0)
       scene.add(camera);
   
-      renderer = new THREE.WebGLRenderer({ canvas: canvasRef.current, antialias: true });
+      renderer = new THREE.WebGLRenderer({ alpha: true, canvas: canvasRef.current, antialias: true });
       renderer.setSize(800, 800);
       renderer.autoClear = false;
       renderer.setClearColor(0x000000, 0.0);
@@ -33,21 +30,46 @@ export function Sphere({ body, size, rotSpeed }) {
       });
       planetMesh = new THREE.Mesh(planetGeometry, planetMaterial);
       scene.add(planetMesh);
+
+      createClouds();
     }
 
+    const createClouds = () => {
+      if(clouds === true) {
+        const cloudsGeometry = new THREE.SphereGeometry(size * 1.002, 64, 64);
+        
+        const cloudsMaterial = new THREE.MeshBasicMaterial({
+          map: new THREE.TextureLoader().load(`/assets/${body}/2k_${body}_clouds.png`),
+          transparent: true,
+          side: THREE.FrontSide,
+        });
+        
+        cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
+        
+        cloudsMesh.position.copy(planetMesh.position);
+        
+        scene.add(cloudsMesh);
+      }
+    };
+
     const setLights = () => {
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0);
       scene.add(ambientLight);
 
-      const pointerLight = new THREE.PointLight(0xffffff, 0.9);
-      pointerLight.position.set(5,3,5);
-      scene.add(pointerLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
+      directionalLight.position.set(-20, 0, 20);
+      scene.add(directionalLight);
     }
 
     const animate = () => {
       requestAnimationFrame(animate);
-      planetMesh.rotation.y -= rotSpeed
-      camera.position.set(0,0,2)
+
+      planetMesh.rotation.y -= rotSpeed;
+
+      if(clouds === true) {cloudsMesh.rotation.y -= rotSpeed * 0.5}
+
+      camera.position.set(0,0,2);
+
       render();
     }
 
@@ -66,7 +88,7 @@ export function Sphere({ body, size, rotSpeed }) {
     start();
 
     return () => {
-      // Clear resources if necessary
+      // Limpiar recursos si es necesario
     };
   }, [canvasRef]);
 
