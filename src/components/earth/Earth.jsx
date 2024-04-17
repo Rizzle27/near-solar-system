@@ -1,0 +1,52 @@
+import { Sphere } from "../sphere/Sphere";
+
+export function Earth() {
+  return (
+    <section className="flex justify-between h-[800px]">
+      <article class="flex flex-col gap-8">
+        <div class="flex mx-auto">
+          <h2 class="text-4xl text-white">Earth</h2>
+        </div>
+        <div class="flex flex-col gap-6 mx-auto w-[70%] text-white">
+          <section class="flex flex-col gap-4">
+            <h3 class="text-2xl">Physical Characteristics</h3>
+            <p className="font-montserrat">
+              With a diameter of approximately 12,742 kilometers, Earth is the
+              third planet from the Sun and the only astronomical object known
+              to harbor life. Its surface is covered by vast oceans, continents,
+              and diverse ecosystems, making it a truly unique and beautiful
+              world. Earth's atmosphere, composed mainly of nitrogen and oxygen,
+              protects life on the planet and regulates its climate.
+            </p>
+          </section>
+
+          <section class="flex flex-col gap-4">
+            <h3 class="text-2xl">Natural Wonders</h3>
+            <p className="font-montserrat">
+              Earth is home to a wide range of natural wonders, including
+              majestic mountains, lush rainforests, and expansive deserts. The
+              Grand Canyon, the Great Barrier Reef, and the Amazon Rainforest
+              are just a few examples of the breathtaking landscapes found on
+              our planet. These natural wonders provide habitats for countless
+              species of plants and animals and attract millions of visitors
+              each year.
+            </p>
+          </section>
+
+          <section class="flex flex-col gap-4">
+            <h3 class="text-2xl">Human Civilization</h3>
+            <p className="font-montserrat">
+              Earth is also the only known planet to support human civilization.
+              From ancient civilizations like the Egyptians and Greeks to modern
+              societies with advanced technology and infrastructure, humans have
+              flourished on Earth for thousands of years. Cities, roads, and
+              monuments dot the landscape, showcasing the ingenuity and
+              creativity of human culture.
+            </p>
+          </section>
+        </div>
+      </article>
+      <Sphere body={"earth"} size={0.6} rotSpeed={0.001} />
+    </section>
+  );
+}
