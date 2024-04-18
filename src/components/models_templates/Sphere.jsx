@@ -74,6 +74,8 @@ export function Sphere({ body, size, rotSpeed, clouds, camPos }) {
 
     animate();
 
+    var camPastPos = (0,0,0);
+
     gsap.to(camera.position, {
       x: camPos.x,
       y: camPos.y,
@@ -81,8 +83,15 @@ export function Sphere({ body, size, rotSpeed, clouds, camPos }) {
       duration: 2,
       onUpdate: function() {
         camera.lookAt(0,0,0)
-      }
+      },
     })
+
+    camPastPos = ({
+      x: camPos.x,
+      y: camPos.y,
+      z: camPos.z,
+    })
+
   }, [body, size, rotSpeed, clouds, camPos])
 
   return <canvas className='rounded-full' ref={canvasRef}></canvas>;

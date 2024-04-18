@@ -1,6 +1,13 @@
+import { useState } from "react";
 import { Sphere } from "../../models_templates/Sphere";
 
 export function Earth({ body, size, rotSpeed, clouds }) {
+  const [camPos, setCamPos] = useState({ x: 0, y: 0, z: 2 });
+
+  const handleCamPos = (x, y, z) => {
+    setCamPos({ x, y, z });
+  };
+
   return (
     <section className="flex justify-between h-[800px]">
       <article className="flex flex-col gap-8">
@@ -46,7 +53,7 @@ export function Earth({ body, size, rotSpeed, clouds }) {
           </section>
         </div>
       </article>
-      <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} />
+      <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} camPos={camPos} />
     </section>
   );
 }
