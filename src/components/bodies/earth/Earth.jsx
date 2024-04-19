@@ -9,7 +9,7 @@ export function Earth({ body, size, rotSpeed, clouds }) {
   };
 
   return (
-    <section className="flex md:flex-row flex-col justify-between">
+    <section className="flex lg:flex-row flex-col justify-between">
       <article className="flex flex-col gap-8">
         <div className="flex mx-auto">
           <h2 className="text-4xl text-white">Earth</h2>
@@ -53,7 +53,7 @@ export function Earth({ body, size, rotSpeed, clouds }) {
           </section>
         </div>
       </article>
-      <div className="w-auto">
+      <div className="aspect-square">
         <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} camPos={camPos} />
       </div>
     </section>
