@@ -7,7 +7,7 @@ import { Jupiter } from "./components/bodies/jupiter/Jupiter"
 import { useState } from "react"
 
 function App() {
-  const [body, setBody] = useState("jupiter")
+  const [body, setBody] = useState("earth")
   const handleBody = (body) => () => setBody(body)
 
   const [rotationSpeed, setRotationSpeed] = useState(0.01)
