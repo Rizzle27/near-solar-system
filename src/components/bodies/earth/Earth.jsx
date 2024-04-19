@@ -9,7 +9,7 @@ export function Earth({ body, size, rotSpeed, clouds }) {
   };
 
   return (
-    <section className="flex justify-between h-[800px]">
+    <section className="flex md:flex-row sm:flex-col justify-between h-[800px]">
       <article className="flex flex-col gap-8">
         <div className="flex mx-auto">
           <h2 className="text-4xl text-white">Earth</h2>
