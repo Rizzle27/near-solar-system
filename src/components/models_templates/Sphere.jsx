@@ -32,7 +32,7 @@ function Animation({body, size, rotSpeed, clouds}) {
 export function Sphere({ body, size, rotSpeed, clouds, camPos }) {
 
   return(
-    <Canvas className="rounded-full w-[800px]" camera={{fov: 47, near: 0.6, far: 10, position: [0,0,2]}}>
+    <Canvas size={['800px', '800px']} camera={{fov: 47, near: 0.6, far: 10, position: [0,0,2]}}>
       <ambientLight intensity={0.5}/>
       {
         <Animation body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} />

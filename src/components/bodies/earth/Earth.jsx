@@ -9,12 +9,12 @@ export function Earth({ body, size, rotSpeed, clouds }) {
   };
 
   return (
-    <section className="flex md:flex-row flex-col justify-between h-[800px]">
+    <section className="flex md:flex-row flex-col justify-between">
       <article className="flex flex-col gap-8">
         <div className="flex mx-auto">
           <h2 className="text-4xl text-white">Earth</h2>
         </div>
-        <div className="flex flex-col gap-6 mx-auto w-[70%] text-white">
+        <div className="flex flex-col gap-6 mx-auto w-auto text-white">
           <section className="flex flex-col gap-4">
             <h3 className="text-2xl">Physical Characteristics</h3>
             <p className="font-montserrat">
@@ -53,7 +53,9 @@ export function Earth({ body, size, rotSpeed, clouds }) {
           </section>
         </div>
       </article>
-      <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} camPos={camPos} />
+      <div className="w-auto">
+        <Sphere body={body} size={size} rotSpeed={rotSpeed} clouds={clouds} camPos={camPos} />
+      </div>
     </section>
   );
 }
